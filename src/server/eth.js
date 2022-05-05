@@ -14,12 +14,12 @@ let web3 = new Web3(rpcUrl);
 let account = web3.eth.accounts.privateKeyToAccount(PK);
 
 const CONFIG = {
-    ASSET_ID: ASSET_ID,
-    DROP_SIZE: DROP_SIZE,
-    PK: PK,
-    RPC_URL: RPC_URL,
-    CAPTCHA_SECRET: CAPTCHA_SECRET,
-    FAUCET_ADDRESS: account.address
+    "ASSET_ID": ASSET_ID,
+    "DROP_SIZE": DROP_SIZE,
+    "PK": PK,
+    "RPC_URL": RPC_URL,
+    "CAPTCHA_SECRET": CAPTCHA_SECRET,
+    "FAUCET_ADDRESS": account.address
   };
 
 // Get balance
@@ -30,7 +30,6 @@ web3.eth.getBalance(account.address).then(res => {
     console.log("Droplet:\t",DROP_SIZE);
     console.log("Address:\t",account.address);
 });
-
 
 // !!! Receiver is given in 0x format
 async function sendGasToken(receiver){

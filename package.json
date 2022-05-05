@@ -1,10 +1,10 @@
 {
-  "name": "ava_faucet",
+  "name": "evm_faucet",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build-subnetfuji": "rimraf dist && cat ./.env.subnetfuji > .env && vue-cli-service build && npm run zip-subnetfuji subnetfuji ./",
+    "build-subnetfuji": "rimraf dist && vue-cli-service build && npm run zip-subnetfuji subnetfuji ./",
     "lint": "vue-cli-service lint",
     "zip-subnetfuji": "rimraf ./faucet-release-subnetfuji.zip && node ./ziputil.js"
   },

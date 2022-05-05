@@ -8,7 +8,8 @@ const history = require('connect-history-api-fallback');
 const {beforeMiddleware} = require('./configure');
 const helmet = require("helmet");
 
-
+const ERL_WINDOW_MIN = parseInt(process.env.ERL_WINDOW_MIN || "15"); // Time period for which requests are checked/remembered in minutes
+const ERL_MAX_HIT = parseInt(process.env.ERL_MAX_HIT || "10"); // The maximum number of connections to allow during the window
 
 // VALUE CHECKING ####################################################
 if(!CONFIG.PK){
@@ -22,8 +23,8 @@ if(!CONFIG.CAPTCHA_SECRET){
 const app = express();
 
 const limiter = rateLimit({
-        windowMs: 10 * 60 * 1000,    // 10 minutes
-        max: 2,                      // Limit each IP to 2 requests per `window` (here, per 10 minutes)
+        windowMs: ERL_WINDOW_MIN * 60 * 1000,  // windowed period ERL_WINDOW_MIN in milliseconds
+        max: ERL_MAX_HIT,                      // limit each IP to ERL_MAX_HIT requests per window
         standardHeaders: true,
         legacyHeaders: false,
 })

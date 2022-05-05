@@ -18,7 +18,7 @@ There are two different layers in this project. The Node Express backend and the
 
 ### ENV Files
 Variables beginning with ``VUE_APP_`` will get injected into the vue application.
- 
+
 Refer to ``.env.example``
 
 - ``ASSET_ID`` The asset id of the asset the faucet will give. If not set, will default to AVAX asset id.
@@ -27,25 +27,28 @@ Refer to ``.env.example``
 - ``RPC_URL`` The URL address to the evm RPC node.
 - ``CAPTCHA_SECRET`` Your captcha secret from Google reCaptcha
 - ``VUE_APP_CAPTCHA_SITE_KEY`` Your public site captcha key from Google reCaptcha
+- ``ERL_WINDOW_MIN`` Time period for which requests are checked/remembered in minutes
+- ``ERL_MAX_HIT`` The maximum number of connections to allow during the window
+- ``ERL_NUM_PROXIES`` The number of proxies between the user and the server
 
 ### Running The Project
 
-In order for the faucet to work, it needs an EVM rpc node to operate on. 
+In order for the faucet to work, it needs an EVM rpc node to operate on.
 1) All environment variables are correct and your private key has funds in it.
 2) Run the project with hot reloading ``yarn serve``
 
-When you go to the website on your browser, you might get a warning saying 
+When you go to the website on your browser, you might get a warning saying
 'Site is not secure'. This is because we are signing our own SSL Certificates. Please ignore and continue to the website.
 
 # Node Express
 
-This backend is used to verify captchas and make a request to the EVM RPC node to issue tokens. The backend files are stored 
+This backend is used to verify captchas and make a request to the EVM RPC node to issue tokens. The backend files are stored
 in the ``src/server`` directory.
 The node is automatically started with the ``yarn serve`` command but can be individually started with ``node src/server/index.js``
 
 ## Deployment
  1) Setup environment variables for production
- 2) Compile and minify to have a production ready application with the appropriate ``yarn build-*`` command. Customize build command in package.json as needed. 
+ 2) Compile and minify to have a production ready application with the appropriate ``yarn build-*`` command. Customize build command in package.json as needed.
  3) Run the node backend by running ``node src/server/index.js``. Procfile in the root directory will do this step automatically if you are deploying as an AWS Elastic Beanstalk app.  Check specifics of your cloud provider as needed.
 
 # Browser Support
@@ -54,7 +57,7 @@ We suggest using Google Chrome to view the EVM Faucet website.
 
 ### Firefox and https
 
-Firefox does not allow https requests to localhost. But the EVM Faucet uses https by default, so we will need to change this to http. Make this switch by editing the `vue.config.json` file in the root directory and change 
+Firefox does not allow https requests to localhost. But the EVM Faucet uses https by default, so we will need to change this to http. Make this switch by editing the `vue.config.json` file in the root directory and change
 
 ```
 devServer: {
@@ -77,5 +80,5 @@ You can pass in the fields below to the faucet URL.
 1) `address` for example `<EVM FAUCET URL>/?address=X-M2fCANtVE6dedYgbW5k6jVVQYf2jiCo7v`. Will populate the address field from the query.
 
 ### QR Reader and HTTPS
-Most browsers disable access to cameras if the website is not served over https. 
+Most browsers disable access to cameras if the website is not served over https.
 For this reason the QR reader at the address input field may fail to find any cameras if served over http.

@@ -12,7 +12,6 @@ zipdir(
   {
     saveTo: "./faucet-release-" + process.argv[2] + ".zip",
     filter: (path, stat) => !/node_modules|\.env*|\.git|\.zip$/.test(path)
-
   },
   function(err, buffer) {
     console.log("Done zipping release binaries");
