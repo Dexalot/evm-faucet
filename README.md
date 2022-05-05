@@ -82,3 +82,6 @@ You can pass in the fields below to the faucet URL.
 ### QR Reader and HTTPS
 Most browsers disable access to cameras if the website is not served over https.
 For this reason the QR reader at the address input field may fail to find any cameras if served over http.
+
+### Rate Limiting
+EVM Faucet uses express-rate-limit node.js package (https://github.com/nfriedly/express-rate-limit).  If you are behind a proxy/load balancer (usually the case with most hosting services, e.g. Heroku, Bluemix, AWS ELB, Nginx, Cloudflare, Akamai, Fastly, Firebase Hosting, Rackspace LB, Riverbed Stingray, etc.), you may need to read the section on Troubleshooting Proxy Issues at https://github.com/nfriedly/express-rate-limit#troubleshooting-proxy-issues.
