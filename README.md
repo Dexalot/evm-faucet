@@ -77,7 +77,7 @@ and run `yarn serve` to reflect the change.
 
 ### Query Parameters
 You can pass in the fields below to the faucet URL.
-1) `address` for example `<EVM FAUCET URL>/?address=X-M2fCANtVE6dedYgbW5k6jVVQYf2jiCo7v`. Will populate the address field from the query.
+1) `address` for example `<EVM FAUCET URL>/?address=0xbcd4042de499d14e55001ccbb24a551f3b954096`. Will populate the address field from the query.
 
 ### QR Reader and HTTPS
 Most browsers disable access to cameras if the website is not served over https.
